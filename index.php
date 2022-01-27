@@ -1,5 +1,5 @@
 <?php
-
+// test
 // Surprise - no HTML!
 //
 // This is a very simple PHP file. It does three things:
