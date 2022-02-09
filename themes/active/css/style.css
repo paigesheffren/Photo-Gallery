@@ -14,7 +14,12 @@ COLOR PALETTE WITH CSS VARIABLES
      color: var(--bodytext-color);
     }
  
- h1,h2,h3,h4,h5,h6 {
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
      color: var( --titles-color);
  }
 
@@ -24,8 +29,21 @@ COLOR PALETTE WITH CSS VARIABLES
 ----------------------------------------- */  
 
 img {
-    max-width: 100%;
+    max-width: 100%; /* on any device smaller than 576px, shrink all images to fit */
     height: auto;
+}
+/* ------------------------------------ CSS VALUES --------------------
+default font size: 16px
+1 em = 16px (content sensitive)
+1 rem = 16px (always)
+
+------------------ */
+
+figure {
+  border: 1px solid;
+  margin: 1rem; /* margin of 16px on both sides = 32px */
+  padding: 1rem; /* padding of 16px on both sides = 32px */
+  /* box-sizing: border-box */
 }
 
 /* --------------------------------------
@@ -44,7 +62,12 @@ img {
    See: https://getbootstrap.com/docs/5.1/layout/breakpoints/
    and: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 */
-
+@media only screen and (min-width: 466px) {  /* 400px img + 2 x 1px borders = 16px margins */
+       figure {
+         width: 434px; /* 400 px img + 2 x 16px padding + 2 x 1px borders = 434px */
+         margin: 1rem auto 2rem auto; /* center figure tag + margin bottom */ 
+       }
+}
 
 @media only screen and (min-width: 576px) { 
        
@@ -53,7 +76,16 @@ img {
 
 
 /* MEDIUM DEVICES (TABLETS, 768PX AND UP) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) { /* 2 x 466px + 16px gap outer margins */
+  main.thumbs {
+    display: grid;
+    padding: 0;
+    grid-template-columns: 434px 434px; /* 868px */
+    grid-column-gap: 1rem; /* 868 + 16 = 884px */
+    border: 1px solid ; /* 884px + 2 x 1px = 886px */
+    width: 886px;
+    margin: 1rem auto; /* 886px + x 16px = 918px + auto-centering */
+  }
     
 }
 
@@ -71,7 +103,13 @@ img {
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
+}
+  @media only screen and (min-width:1368) { /* 1336px + 2 x 16px margin = 1368 */
+    main.thumbs {
+      grid-template-columns: 434px 434px 434px; /* 1302px */
+      grid-column-gap: 1rem; /* 1303 + 2 x 16px = 1334px  + 2 additional 1px borders = 1336px */
+      width: 1336px;
+    }
   }
 
 
